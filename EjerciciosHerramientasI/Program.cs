@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EjerciciosHerramientasI.Ejercicios;
+using System;
 
 namespace EjerciciosHerramientasI
 {
@@ -6,8 +7,8 @@ namespace EjerciciosHerramientasI
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
-
+            EjercicioParcial ejercicioParcial = new();
+            ejercicioParcial.GeneratePassword();
         }
     }
 }
