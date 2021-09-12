@@ -9,5 +9,6 @@ namespace EjerciciosHerramientasI.Models
     public partial class Pin
     {
         public int[] Password { get; set; }
+        public int[] GenPass { get; set; }
     }
 }

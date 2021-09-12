@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -21,12 +22,22 @@ namespace EjerciciosHerramientasI.Ejercicios
             genPass = new int[4];
         }
 
-        public void DecriptPassword(int intentos)
+        public void DecriptPassword(int intentos, bool isComplete)
         {
             if (intentos >= 10)
             {
-                Console.WriteLine($"Has superado el numero maximo de intentos\n");
-                TryAgain();
+                if (isComplete)
+                {
+                    Console.WriteLine("Felicitaciones adivinaste");
+                    TryAgain();
+                }
+                else if (intentos >= 10)
+                {
+                    Console.WriteLine($"Has superado el numero maximo de intentos\n");
+                    TryAgain();
+                }
+                    
+
             }
             else
             {
@@ -47,11 +58,18 @@ namespace EjerciciosHerramientasI.Ejercicios
                     }
                     if (insertedPin[j].Equals(password[j]))
                     {
+                        
                         Console.WriteLine($"+ {insertedPin[j]} {password[j]}");
+                        bool seq = insertedPin.SequenceEqual(password);
+                        if (seq && j>=3)
+                        {
+                            intentos = 10;
+                            DecriptPassword(intentos, true);                            
+                        }
                     }
 
                 }
-                DecriptPassword(intentos);
+                DecriptPassword(intentos, false);
             }
         }
 
