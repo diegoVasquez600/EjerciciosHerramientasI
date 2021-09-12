@@ -16,7 +16,6 @@ namespace EjerciciosHerramientasI.Ejercicios
         public EjercicioParcial()
         {
             pin = new();
-            intentos = 0;
             password = new();
             insertedPin = new();
             genPass = new int[4];
