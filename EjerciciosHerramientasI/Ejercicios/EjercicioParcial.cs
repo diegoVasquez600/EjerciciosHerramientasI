@@ -12,7 +12,6 @@ namespace EjerciciosHerramientasI.Ejercicios
         Pin pin;
         List<int> password;
         List<int> insertedPin;
-        int intentos;
         int[] genPass;
         public EjercicioParcial()
         {
