@@ -12,30 +12,27 @@ namespace EjerciciosHerramientasI.Ejercicios
         Pin pin;
         List<int> password;
         List<int> insertedPin;
-        int cantError;
+        int intentos;
         int[] genPass;
         public EjercicioParcial()
         {
             pin = new();
-            cantError = 0;
+            intentos = 0;
             password = new();
             insertedPin = new();
             genPass = new int[4];
         }
 
-        public void DecriptPassword(bool isError)
+        public void DecriptPassword(int intentos)
         {
-            if (isError)
-            {
-                cantError++;
-            }
-            if (cantError >= 10)
+            if (intentos >= 10)
             {
                 Console.WriteLine($"Has superado el numero maximo de intentos\n");
                 TryAgain();
             }
             else
             {
+                intentos += 1;
                 insertedPin.Clear();
                 Console.WriteLine($"Ingrese el PIN (4 digitos): ");
                 var digitos = Console.ReadLine();
@@ -53,13 +50,10 @@ namespace EjerciciosHerramientasI.Ejercicios
                     if (insertedPin[j].Equals(password[j]))
                     {
                         Console.WriteLine($"+ {insertedPin[j]} {password[j]}");
-                        if (insertedPin.ToArray().Equals(password.ToArray()))
-                        {
-                            TryAgain();
-                        }
                     }
-                        
+
                 }
+                DecriptPassword(intentos);
             }
         }
 
@@ -77,7 +71,7 @@ namespace EjerciciosHerramientasI.Ejercicios
             else if (opt == 2)
             {
                 Console.WriteLine($"Hasta luego\n");
-                Console.ReadKey();
+                return;
             }
         }
 
@@ -94,7 +88,6 @@ namespace EjerciciosHerramientasI.Ejercicios
                 if (genPass.Length < 4)
                     GeneratePassword();
             }
-            DecriptPassword(false);
         }
             
     }

@@ -9,6 +9,8 @@ namespace EjerciciosHerramientasI
         {
             EjercicioParcial ejercicioParcial = new();
             ejercicioParcial.GeneratePassword();
+            ejercicioParcial.DecriptPassword(0);
+            
         }
     }
 }
